@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>作者墙 · 古文观止</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="gw-top"></div>
+
+<div class="container section">
+  <div class="section-head"><h2>作者墙 · 六十位名家</h2></div>
+  <div id="author-detail"></div>
+  <div class="author-grid" id="author-grid"></div>
+</div>
+
+<div id="gw-bottom"></div>
+
+<script src="data/volumes.js"></script>
+<script src="data/articles.js"></script>
+<script src="data/authors.js"></script>
+<script src="data/quotes.js"></script>
+<script src="js/common.js"></script>
+<script>
+(function () {
+  GW.mount("作者墙");
+
+  function countOf(authorId) {
+    return ARTICLES.filter(function (a) { return a.authorId === authorId; }).length;
+  }
+
+  function firstRealChar(name) {
+    for (var i = 0; i < name.length; i++) {
+      var c = name.charAt(i);
+      if (/[\u4e00-\u9fff\u3400-\u4dbf]/.test(c)) return c;
+    }
+    return name.charAt(0) || "?";
+  }
+
+  function renderGrid() {
+    document.getElementById("author-grid").innerHTML = AUTHORS.map(function (a) {
+      var c = countOf(a.id);
+      if (!c) return "";
+      return '<a class="author-tile" href="authors.html?id=' + a.id + '">' +
+        '<div class="avatar" style="background:' + a.color + '">' + firstRealChar(a.name) + "</div>" +
+        '<div class="a-name">' + a.name + "</div>" +
+        '<div class="a-era">' + GW.esc(a.era) + "</div>" +
+        '<div class="a-count">' + c + " 篇</div></a>";
+    }).join("");
+  }
+
+  function renderDetail(id) {
+    var a = GW.findAuthor(id);
+    var box = document.getElementById("author-detail");
+    if (!a) { box.innerHTML = ''; return; }
+    var works = ARTICLES.filter(function (x) { return x.authorId === id; });
+    box.innerHTML =
+      '<div class="author-detail">' +
+        '<div class="avatar" style="background:' + a.color + '">' + firstRealChar(a.name) + "</div>" +
+        '<div>' +
+          '<h2>' + a.name + '</h2>' +
+          '<div class="a-era">' + GW.esc(a.era) + " ｜ 入选 " + works.length + " 篇</div>" +
+          '<p>' + GW.esc(a.bio || "作者小传整理中…") + '</p>' +
+          '<div class="author-works">' + works.map(function (w) {
+            return '<a href="article.html?id=' + w.id + '">' + GW.esc(w.title) + '</a>';
+          }).join("") + '</div>' +
+        '</div></div>';
+  }
+
+  var params = new URLSearchParams(location.search);
+  var id = params.get("id") || location.hash.replace("#id-", "");
+  renderGrid();
+  if (id) renderDetail(id);
+  window.addEventListener("hashchange", function () { renderDetail(location.hash.replace("#id-", "")); });
+})();
+</script>
+</body>
+</html>

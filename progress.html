@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的进度 · 古文观止</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="gw-top"></div>
+
+<div class="container section">
+  <div class="section-head"><h2>我的阅读进度</h2></div>
+  <div class="stat-row" id="stats"></div>
+
+  <div class="panel" style="margin-bottom:24px">
+    <h2>全卷进度</h2>
+    <div id="vol-progress"></div>
+  </div>
+
+  <div class="section-head"><h2>我的收藏</h2></div>
+  <div class="article-list" id="fav-list"></div>
+</div>
+
+<div id="gw-bottom"></div>
+
+<script src="data/volumes.js"></script>
+<script src="data/articles.js"></script>
+<script src="data/authors.js"></script>
+<script src="data/quotes.js"></script>
+<script src="js/common.js"></script>
+<script>
+(function () {
+  GW.mount("我的进度");
+
+  var done = JSON.parse(localStorage.getItem("gw_done") || "[]");
+  var favs = JSON.parse(localStorage.getItem("gw_fav") || "[]");
+
+  document.getElementById("stats").innerHTML =
+    stat(done.length, "已读篇目") +
+    stat(favs.length, "收藏篇目") +
+    stat(ARTICLES.length, "全本篇目") +
+    stat(Math.round(done.length / ARTICLES.length * 100) + "%", "完成度");
+
+  var vp = document.getElementById("vol-progress");
+  vp.innerHTML = VOLUMES.map(function (v) {
+    var list = GW.articlesOfVolume(v.id);
+    var read = list.filter(function (a) { return done.indexOf(a.id) >= 0; }).length;
+    var pct = Math.round(read / list.length * 100);
+    return '<div style="margin-bottom:14px">' +
+      '<div style="display:flex;justify-content:space-between;font-size:14px">' +
+        '<span>' + v.name + " · " + GW.esc(v.theme) + "</span>" +
+        '<span class="muted">' + read + " / " + list.length + "</span></div>" +
+      '<div class="progress-bar"><div class="fill" style="width:' + pct + '%"></div></div>' +
+    "</div>";
+  }).join("");
+
+  var favList = document.getElementById("fav-list");
+  if (favs.length) {
+    favList.innerHTML = favs.map(function (id) {
+      var a = GW.findArticle(id);
+      if (!a) return "";
+      var v = GW.findVolume(a.vol);
+       return '<a class="article-row" href="article.html?id=' + a.id + '">' +
+         '<span class="idx">' + a.seq + "</span>" +
+         '<img class="ar-cover" src="assets/covers_thumb/' + a.id + '.jpg" alt="' + GW.esc(a.title) + ' 绘本插画" onerror="this.style.visibility=\'hidden\'">' +
+         "<div><div class=\"ar-title\"><span class=\"vol-tag\">" + GW.esc(a.source) + "</span>" + GW.esc(a.title) + "</div>" +
+        '<div class="ar-src">' + GW.esc((v ? v.name : "") + " · " + a.author + " · " + a.dynasty) + "</div></div>" +
+        '<div class="ar-right"><div class="difficulty">' + GW.stars(a.difficulty) + "</div></div></a>";
+    }).join("");
+  } else {
+    favList.innerHTML = '<div class="panel text-center muted" style="padding:40px">还没有收藏篇目。阅读时点击“收藏”按钮，就会出现在这里。</div>';
+  }
+
+  function stat(num, lab) {
+    return '<div class="stat-card"><div class="num">' + num + "</div><div class=\"lab\">" + lab + "</div></div>";
+  }
+})();
+</script>
+</body>
+</html>

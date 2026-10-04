@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>古文观止 · 青少年图文读本</title>
+<meta name="description" content="全本222篇《古文观止》青少年图文读本：注音、译文、注释、赏析与AI插画，适合中小学生阅读。">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="gw-top"></div>
+
+<section class="container hero">
+  <div>
+    <h1>观止，观止，<span class="accent">最好的古文</span>都在这里</h1>
+    <p class="desc">清人吴楚材、吴调侯编选的《古文观止》，精选先秦至明代 222 篇传世名作。我们把它做成了适合中小学生阅读的图文读本：每篇都有注音、逐句译文、生词注释和赏析导读，还配了一幅幅绘本插画。</p>
+    <div class="chips">
+      <span class="chip"><i>222</i> 篇 · 全本</span>
+      <span class="chip"><i>12</i> 卷 · 完整</span>
+      <span class="chip">全文注音 · 逐句译文</span>
+      <span class="chip">AI 绘本插画</span>
+      <span class="chip">小学 · 初中 · 高中分级</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn" href="levels.html">分级学习 →</a>
+      <a class="btn" href="volume.html?vol=1">分卷阅读</a>
+      <a class="btn ghost" href="authors.html">认识作者</a>
+    </div>
+  </div>
+  <div class="hero-cover">
+    <img src="assets/covers/v01-001.png" alt="郑伯克段于鄢 绘本插画" onerror="this.style.display='none'">
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-head">
+    <h2>十二卷 · 一脉相承</h2>
+    <a class="more" href="volume.html?vol=1">进入分卷阅读 →</a>
+  </div>
+  <div class="vol-grid" id="vol-grid"></div>
+</section>
+
+<section class="container section">
+  <div class="section-head"><h2>两千年 · 历史长河</h2><a class="more" href="timeline.html">按时代检索 →</a></div>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<section class="container section">
+  <div class="section-head"><h2>名句金句</h2><a class="more" href="quotes.html">全部金句 →</a></div>
+  <div class="quote-grid" id="quote-grid"></div>
+</section>
+
+<section class="container section">
+  <div class="section-head"><h2>作者风采</h2><a class="more" href="authors.html">全部作者 →</a></div>
+  <div class="author-strip" id="author-strip"></div>
+</section>
+
+<div id="gw-bottom"></div>
+
+<script src="data/volumes.js"></script>
+<script src="data/articles.js"></script>
+<script src="data/authors.js"></script>
+<script src="data/quotes.js"></script>
+<script src="js/common.js"></script>
+<script>
+(function () {
+  GW.mount("首页");
+
+  var volGrid = document.getElementById("vol-grid");
+  volGrid.innerHTML = VOLUMES.map(function (v) {
+    return '<a class="vol-card" href="volume.html?vol=' + v.id + '">' +
+      '<span class="vol-count">' + v.count + ' 篇</span>' +
+      '<div class="vol-num" style="background:' + v.color + '">' + v.name + "</div>" +
+      '<h3>' + GW.esc(v.theme) + "</h3>" +
+      '<div class="vol-attr">' + GW.esc(v.era) + " · " + GW.esc(v.source) + "</div>" +
+      '<div class="vol-desc">' + GW.esc(v.desc) + "</div></a>";
+  }).join("");
+
+  var eras = [
+    { name: "春秋", range: "前722—前468", color: "#E2684A" },
+    { name: "战国", range: "前475—前221", color: "#E2684A" },
+    { name: "秦", range: "前221—前207", color: "#3E8E6E" },
+    { name: "两汉", range: "前202—220", color: "#4A7FC1" },
+    { name: "六朝", range: "220—589", color: "#8A6FB8" },
+    { name: "唐", range: "618—907", color: "#8A6FB8" },
+    { name: "宋", range: "960—1279", color: "#E4A933" },
+    { name: "明", range: "1368—1644", color: "#D9534F" }
+  ];
+  document.getElementById("timeline").innerHTML = eras.map(function (e) {
+    return '<a class="tl-node" href="timeline.html?era=' + e.name + '">' +
+      '<div class="tl-era" style="color:' + e.color + '">' + e.name + "</div>" +
+      '<div class="tl-range">' + e.range + '</div></a>';
+  }).join("");
+
+  var quoteGrid = document.getElementById("quote-grid");
+  quoteGrid.innerHTML = QUOTES.slice(0, 6).map(function (q) {
+    return '<a class="quote-card" href="article.html?id=' + q.artId + '">' +
+      '<div class="q-text">“' + GW.esc(q.text) + '”</div>' +
+      '<div class="q-src"><b>' + GW.esc(q.src) + "</b></div></a>";
+  }).join("");
+
+  var authorStrip = document.getElementById("author-strip");
+  var featured = ["zuoqiuming", "simaqian", "zhugeliang", "taoyuanming", "wangbo", "hanyu", "liuzongyuan", "ouyangxiu", "sushi", "wangshouren"];
+  authorStrip.innerHTML = featured.map(function (id) {
+    var a = GW.findAuthor(id);
+    if (!a) return "";
+    return '<a class="author-card" href="authors.html#id-' + id + '">' +
+      '<div class="avatar" style="background:' + a.color + '">' + a.name.charAt(0) + "</div>" +
+      '<div class="a-name">' + a.name + "</div>" +
+      '<div class="a-era">' + GW.esc(a.era) + "</div></a>";
+  }).join("");
+})();
+</script>
+</body>
+</html>

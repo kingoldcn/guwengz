@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>两千年 · 古文长河 · 古文观止</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.tl-page{padding:24px 0 80px}
+.tl-head{display:flex;flex-direction:column;gap:14px;margin-bottom:26px;padding:22px 24px;
+  background:linear-gradient(135deg,#f7f2e7,#f2e7d3);border-radius:var(--radius);border:1px solid var(--line)}
+.tl-head h1{font-family:var(--serif);font-size:30px;margin:0;color:var(--brand)}
+.tl-head .sub{font-size:14px;color:var(--ink-soft);line-height:1.7}
+
+.era-nav{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin-bottom:26px}
+.era-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 10px;text-align:center;cursor:pointer;transition:.2s;
+  display:flex;flex-direction:column;align-items:center;gap:6px}
+.era-card:hover{border-color:var(--brand);transform:translateY(-2px)}
+.era-card.active{border-color:var(--era-color,var(--brand));
+  background:linear-gradient(180deg,rgba(232,104,74,.08),transparent)}
+.era-card .era-name{font-family:var(--serif);font-size:19px;font-weight:700;color:var(--era-color)}
+.era-card .era-yr{font-size:11px;color:var(--ink-soft);letter-spacing:.5px}
+.era-card .era-cnt{font-size:12px;color:var(--ink-soft);font-weight:600}
+.era-card .era-cnt b{font-size:16px;color:var(--era-color);font-weight:700}
+.era-card .era-sub{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-top:2px}
+.era-card .era-sub span{font-size:10px;padding:1px 5px;border-radius:999px;
+  background:#f5f0e3;color:var(--ink-soft)}
+
+.dyn-strip{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px;
+  padding:10px 14px;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+.dyn-strip .lbl{font-size:12px;font-weight:600;color:var(--ink-soft);letter-spacing:1px;margin-right:4px}
+.dyn-strip .chip{padding:6px 14px;border-radius:999px;font-size:13px;cursor:pointer;
+  border:1px solid var(--line);color:var(--ink-soft);background:transparent;transition:.15s;font-weight:500}
+.dyn-strip .chip:hover{color:var(--brand);border-color:var(--brand)}
+.dyn-strip .chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.dyn-strip .chip .n{font-size:11px;opacity:.7;margin-left:4px}
+.dyn-strip .cnt{margin-left:auto;font-size:13px;color:var(--ink-soft)}
+.dyn-strip .cnt b{color:var(--brand)}
+
+.article-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.art-card{background:var(--card);border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--shadow);transition:.2s;
+  display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.art-card:hover{transform:translateY(-3px);border-color:var(--brand)}
+.art-cover{aspect-ratio:16/10;background:#eef;overflow:hidden;position:relative}
+.art-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:.3s}
+.art-card:hover .art-cover img{transform:scale(1.05)}
+.art-dyn-badge{position:absolute;top:8px;left:8px;font-size:11px;font-weight:600;
+  padding:3px 10px;border-radius:999px;color:#fff;background:rgba(0,0,0,.55)}
+.art-info{padding:11px 14px 13px;display:flex;flex-direction:column;gap:4px}
+.art-title{font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.3;
+  display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.art-author{font-size:12.5px;color:var(--ink-soft)}
+.art-dyn{font-size:11.5px;color:var(--ink-soft);font-weight:500}
+.art-synopsis{font-size:12px;color:var(--ink-soft);line-height:1.5;margin-top:4px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+.pager{margin-top:24px;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
+.pager button{padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);
+  color:var(--ink-soft);font-size:13px;cursor:pointer;transition:.15s}
+.pager button:hover{color:var(--brand);border-color:var(--brand)}
+.pager button:disabled{opacity:.4;cursor:default}
+.pager .pn{font-size:13px;color:var(--ink-soft)}
+.pager .pn b{color:var(--brand)}
+
+.empty-state{text-align:center;padding:60px 20px;color:var(--ink-soft);font-size:15px}
+
+@media (max-width:900px){
+  .era-nav{grid-template-columns:repeat(4,1fr)}
+  .article-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .tl-head h1{font-size:24px}
+}
+@media (max-width:600px){
+  .era-nav{grid-template-columns:repeat(3,1fr)}
+  .article-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+}
+</style>
+</head>
+<body>
+<div id="gw-top"></div>
+
+<div class="container tl-page">
+  <div class="tl-head">
+    <h1>两千年 · 古文长河</h1>
+    <div class="sub">按历史时代检索：春秋→战国→秦→两汉→六朝→唐→宋→明，共 222 篇。<br>
+      每一篇都对应一段具体的历史时刻——政变、边塞、改革、战乱、离乱、隐居、送别、辩难——点一个时代，看看这个时代有哪些传世文章。</div>
+  </div>
+
+  <div class="era-nav" id="era-nav"></div>
+  <div class="dyn-strip" id="dyn-strip"></div>
+  <div class="article-grid" id="art-grid"></div>
+  <div class="pager" id="pager"></div>
+</div>
+
+<div id="gw-bottom"></div>
+
+<script src="data/volumes.js"></script>
+<script src="data/articles.js"></script>
+<script src="data/authors.js"></script>
+<script src="data/quotes.js"></script>
+<script src="js/common.js"></script>
+<script>
+(function () {
+  GW.mount("两千年 · 古文长河");
+
+  var params = new URLSearchParams(location.search);
+  var era = params.get("era") || "";
+  var dyn = params.get("dyn") || "";
+
+  var PAGE = 20;
+  var PAGE_SIZE = 20;
+
+  var ERAS = [
+    { k: "春秋", range: "前770—前476", dyn: ["周","春秋"],  color: "#E2684A" },
+    { k: "战国", range: "前475—前221", dyn: ["战国"],      color: "#D6723A" },
+    { k: "秦",   range: "前221—前207", dyn: ["秦"],        color: "#3E8E6E" },
+    { k: "两汉", range: "前202—220",   dyn: ["西汉","东汉"],color: "#4A7FC1" },
+    { k: "六朝", range: "220—589",     dyn: ["三国","西晋","东晋","南朝齐"], color: "#8A6FB8" },
+    { k: "唐",   range: "618—907",     dyn: ["唐"],        color: "#6F5D9A" },
+    { k: "宋",   range: "960—1279",    dyn: ["宋"],        color: "#C48A26" },
+    { k: "明",   range: "1368—1644",   dyn: ["明"],        color: "#C1483F" }
+  ];
+
+  function findEra(k){ return ERAS.find(function(x){return x.k===k;}); }
+
+  // 统计每个时代篇数
+  var eraStats = ERAS.map(function (e) {
+    var cnt = ARTICLES.filter(function (a){ return e.dyn.indexOf(a.dynasty) >= 0; }).length;
+    return { era: e, cnt: cnt };
+  });
+
+  // 时代 nav 卡
+  var eraNav = document.getElementById("era-nav");
+  eraNav.innerHTML = eraStats.map(function (s) {
+    var e = s.era;
+    return '<div class="era-card' + (era===e.k?' active':'') + '" style="--era-color:'+e.color+(era===e.k?';':'')+
+      '" data-era="' + e.k + '">' +
+      '<div class="era-name">' + e.k + "</div>" +
+      '<div class="era-yr">' + e.range + "</div>" +
+      '<div class="era-cnt"><b>' + s.cnt + "</b> 篇</div>" +
+      '<div class="era-sub">' + e.dyn.map(function(d){
+        var n = ARTICLES.filter(function(a){return a.dynasty===d;}).length;
+        return '<span>' + d + '·' + n + '</span>';
+      }).join("") + "</div></div>";
+  }).join("");
+  eraNav.querySelectorAll(".era-card").forEach(function (el) {
+    el.addEventListener("click", function () {
+      var e = el.getAttribute("data-era");
+      if (era === e){ era = ""; dyn = ""; } else { era = e; dyn = ""; }
+      window.location.href = era ? '?era=' + era : '?';
+    });
+  });
+
+  // 朝代 sub strip
+  var dynStrip = document.getElementById("dyn-strip");
+  if (era){
+    var cur = findEra(era);
+    dynStrip.style.display = 'flex';
+    dynStrip.innerHTML = '<span class="lbl">朝 代</span>' +
+      cur.dyn.map(function (d) {
+        var n = ARTICLES.filter(function (a){ return a.dynasty===d; }).length;
+        return '<span class="chip' + (dyn===d?' active':'') + '" data-dyn="' + d + '">' + d + '<span class="n">·' + n + '篇</span></span>';
+      }).join("") +
+      '<span class="cnt">共 <b>' + list().length + "</b> 篇</span>";
+    dynStrip.querySelectorAll(".chip").forEach(function (el) {
+      el.addEventListener("click", function () {
+        dyn = el.getAttribute("data-dyn");
+        window.location.href = '?era=' + era + '&dyn=' + dyn;
+      });
+    });
+  } else {
+    dynStrip.style.display = 'none';
+  }
+
+  function list(){
+    var dynSet = null;
+    if (dyn){ dynSet = [dyn]; }
+    else if (era){ dynSet = (findEra(era)||{}).dyn || []; }
+    return ARTICLES
+      .filter(function (a){ return !dynSet || dynSet.indexOf(a.dynasty) >= 0; })
+      .sort(function (a,b){
+        // 按 vol 顺序
+        var av = a.vol, bv = b.vol;
+        if (av !== bv) return av - bv;
+        return a.seq - b.seq;
+      });
+  }
+
+  var p = parseInt(params.get("p") || "1", 10);
+  var all = list();
+  var total = Math.max(1, Math.ceil(all.length / PAGE_SIZE));
+  if (p > total) p = 1;
+  var start = (p-1) * PAGE_SIZE;
+  var items = all.slice(start, start + PAGE_SIZE);
+
+  var grid = document.getElementById("art-grid");
+  if (all.length === 0){
+    grid.innerHTML = '<div class="empty-state">该朝代暂无篇目，请选择其他时代</div>';
+    document.getElementById("pager").innerHTML = '';
+    return;
+  }
+
+  grid.innerHTML = items.map(function (a) {
+    var cov = 'assets/covers_thumb/' + a.id + '.jpg';
+    var aera = ERAS.find(function (e){ return e.dyn.indexOf(a.dynasty) >= 0; });
+    return '<a class="art-card" href="article.html?id=' + a.id + '">' +
+      '<div class="art-cover">' +
+        '<img loading="lazy" decoding="async" src="' + cov + '" width="360" height="225" onerror="this.src=\'assets/covers_thumb/v01-001.jpg\'">' +
+        '<span class="art-dyn-badge" style="background:' + (aera?aera.color:'#666') + '">' + a.dynasty + "</span></div>" +
+      '<div class="art-info">' +
+        '<div class="art-title">' + GW.esc(a.title) + "</div>" +
+        '<div class="art-author">' + GW.esc(a.author) + "</div>" +
+        '<div class="art-dyn">' + GW.esc(a.dynasty + ' · 选自 ' + a.source) + "</div>" +
+        '<div class="art-synopsis">' + GW.esc(a.synopsis || '') + "</div></div></a>";
+  }).join("");
+
+  // 分页
+  var pager = document.getElementById("pager");
+  var pages = total;
+  if (pages <= 1){ pager.innerHTML = ''; return; }
+  var qbase = era ? ('?era=' + era) : '?';
+  if (dyn) qbase += (era?'&':'?') + 'dyn=' + dyn;
+  pager.innerHTML =
+    '<button id="pg-prev"' + (p<=1?' disabled':'') + '>&lt; 上一页</button>' +
+    '<span class="pn">第 <b>' + p + '/' + pages + "</b> 页 · 共 <b>" + all.length + "</b> 篇</span>" +
+    '<button id="pg-next"' + (p>=pages?' disabled':'') + '>下一页 &gt;</button>';
+  document.getElementById("pg-prev").addEventListener("click", function(){
+    window.location.href = qbase + '&p=' + (p-1);
+  });
+  document.getElementById("pg-next").addEventListener("click", function(){
+    window.location.href = qbase + '&p=' + (p+1);
+  });
+})();
+</script>
+</body>
+</html>

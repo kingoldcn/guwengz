@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分卷阅读 · 古文观止</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="gw-top"></div>
+
+<div class="container" id="vol-page"></div>
+
+<div id="gw-bottom"></div>
+
+<script src="data/volumes.js"></script>
+<script src="data/articles.js"></script>
+<script src="data/authors.js"></script>
+<script src="data/quotes.js"></script>
+<script src="js/common.js"></script>
+<script>
+(function () {
+  GW.mount("分卷阅读");
+  var params = new URLSearchParams(location.search);
+  var volId = parseInt(params.get("vol"), 10) || 1;
+  var v = GW.findVolume(volId);
+  if (!v) { document.getElementById("vol-page").innerHTML = '<p class="muted">卷次不存在</p>'; return; }
+
+  var list = GW.articlesOfVolume(volId);
+  var nextV = GW.findVolume(volId + 1);
+
+  document.getElementById("vol-page").innerHTML =
+    '<div class="vol-header">' +
+      '<div class="big-seal" style="background:' + v.color + '">' + v.name.replace("卷", "第") + "</div>" +
+      "<div>" +
+        '<h1>' + GW.esc(v.theme) + "</h1>" +
+        '<div class="vol-meta">' + GW.esc(v.name + " · " + v.era + " · " + v.range) + " ｜ 选自 " + GW.esc(v.source) + " ｜ 共 " + v.count + " 篇</div>" +
+      "</div>" +
+    "</div>" +
+    '<div class="vol-tools">' +
+      '<a class="tool-btn" href="levels.html?level=1"><i>●</i> 按学段分级筛选</a>' +
+      '<span class="vol-tools-sep">·</span>' +
+      '<span class="muted">共 <b>' + v.count + "</b> 篇：小学 <b>" + list.filter(function(a){return a.difficulty===1;}).length +
+      "</b> · 初中 <b>" + list.filter(function(a){return a.difficulty===2;}).length +
+      "</b> · 高中 <b>" + list.filter(function(a){return a.difficulty===3;}).length + "</b></span>" +
+    '</div>' +
+    '<div class="article-list">' +
+      list.map(function (a, i) {
+        var stars = "";
+         return '<a class="article-row" href="article.html?id=' + a.id + '">' +
+           '<span class="idx">' + a.seq + "</span>" +
+           '<img class="ar-cover" src="assets/covers_thumb/' + a.id + '.jpg" alt="' + GW.esc(a.title) + ' 绘本插画" onerror="this.style.visibility=\'hidden\'">' +
+           "<div>" +
+            '<div class="ar-title"><span class="vol-tag">' + GW.esc(a.source) + "</span>" + GW.esc(a.title) + "</div>" +
+            '<div class="ar-src">' + GW.esc(a.author + " · " + a.dynasty) + (a.synopsis ? " ｜ " + GW.esc(a.synopsis) : "") + "</div>" +
+          "</div>" +
+          '<div class="ar-right"><div class="difficulty" title="' + GW.diffLabel(a.difficulty) + '">' + GW.stars(a.difficulty) + "</div></div>" +
+        "</a>";
+      }).join("") +
+    "</div>" +
+    (nextV ? '<div class="reading-nav" style="justify-content:flex-end"><a href="volume.html?vol=' + nextV.id + '"><div class="dir">下一卷</div><div class="t">' + GW.esc(nextV.name + " " + nextV.theme) + " →</div></a></div>" : "");
+})();
+</script>
+</body>
+</html>

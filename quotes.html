@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>名句金句 · 古文观止</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="gw-top"></div>
+
+<div class="container section">
+  <div class="section-head"><h2>名句金句 · 传诵千年</h2></div>
+  <div class="quote-detail" id="quote-detail"></div>
+  <div class="quote-grid" id="quote-grid"></div>
+</div>
+
+<div id="gw-bottom"></div>
+
+<script src="data/volumes.js"></script>
+<script src="data/articles.js"></script>
+<script src="data/authors.js"></script>
+<script src="data/quotes.js"></script>
+<script src="js/common.js"></script>
+<script>
+(function () {
+  GW.mount("名句金句");
+
+  function renderGrid() {
+    document.getElementById("quote-grid").innerHTML = QUOTES.map(function (q) {
+      return '<a class="quote-card" href="article.html?id=' + q.artId + '">' +
+        '<div class="q-text">“' + GW.esc(q.text) + '”</div>' +
+        '<div class="q-src"><b>' + GW.esc(q.src) + "</b></div></a>";
+    }).join("");
+  }
+
+  function renderDetail(idx) {
+    var q = QUOTES[idx] || QUOTES[0];
+    document.getElementById("quote-detail").innerHTML =
+      '<div class="q-big">“' + GW.esc(q.text) + "”</div>" +
+      '<div class="q-src"><b>' + GW.esc(q.src) + "</b> ｜ <a href=\"article.html?id=" + q.artId + "\">阅读全文 →</a></div>";
+  }
+
+  renderGrid();
+  renderDetail(0);
+  document.querySelectorAll(".quote-card").forEach(function (el, i) {
+    el.addEventListener("click", function (e) {
+      e.preventDefault();
+      renderDetail(i);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+window.CONTENT = {
+  "id": "v12-018",
+  "title": "五人墓碑记",
+  "author": "张溥",
+  "dynasty": "明",
+  "source": "《古文观止·卷十二》",
+  "difficulty": 3,
+  "py_overrides": {},
+  "paragraphs": [
+    {
+      "sentences": [
+        {
+          "zh": "五人者，盖当蓼洲周公之被逮，激于义而死焉者也。至于今，郡之贤士大夫请于当道，即除魏阉废祠之址以葬之；且立石于其墓之门，以旌其所为。呜呼，亦盛矣哉！",
+          "yi": "这五个人，是在周蓼洲先生被捕时，激于义愤而牺牲的。到了今天，本郡德高望重的士大夫向当权者请求，就清理魏忠贤生祠的废址来安葬他们，并在墓门前立碑，来表彰他们的义举。唉，这也真是盛大的事啊！",
+          "py": "wǔ rén zhě gài dāng liǎo zhōu zhōu gōng zhī bèi dǎi jī yú yì ér sǐ yān zhě yě zhì yú jīn jùn zhī xián shì dà fū qǐng yú dāng dào jí chú wèi yān fèi cí zhī zhǐ yǐ zàng zhī qiě lì shí yú qí mù zhī mén yǐ jīng qí suǒ wèi wū hū yì shèng yǐ zāi"
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "zh": "夫五人之死，去今之墓而葬焉，其为时止十有一月耳。夫十有一月之中，凡富贵之子，慷慨得志之徒，其疾病而死，死而湮没不足道者，亦已众矣；况草野之无闻者欤？独五人之皦皦，何也？",
+          "yi": "这五人的死，距离如今建墓安葬，不过十一个月罢了。在这十一个月里，那些富贵子弟、得意洋洋的人，因病而死、死后默默无闻不值一提的，也已经很多了；何况乡野间默默无闻的人呢？唯独这五人声名显赫，是什么缘故呢？",
+          "py": "fū wǔ rén zhī sǐ qù jīn zhī mù ér zàng yān qí wèi shí zhǐ shí yǒu yī yuè ěr fū shí yǒu yī yuè zhī zhōng fán fù guì zhī zi kāng kǎi dé zhì zhī tú qí jí bìng ér sǐ sǐ ér yān méi bù zú dào zhě yì yǐ zhòng yǐ kuàng cǎo yě zhī wú wén zhě yú dú wǔ rén zhī jiǎo jiǎo hé yě"
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "zh": "予犹记周公之被逮，在丙寅三月之望。吾社之行为士先者，为之声义，敛赀财以送其行，哭声震动天地。缇骑按剑而前，问：“谁为哀者？”众不能堪，抶而仆之。是时以大中丞抚吴者为魏之私人毛一鹭，公之逮所由使也；吴之民方痛心焉，于是乘其厉声以呵，则噪而相逐。中丞匿于溷藩以免。既而以吴民之乱请于朝，按诛五人，曰颜佩韦、杨念如、马杰、沈扬、周文元，即今之傫然在墓者也。",
+          "yi": "我还记得周公被捕，是在丙寅年三月十五日。我们社里那些品行可为读书人表率的人，为他伸张正义，募集钱财为他送行，哭声震动天地。锦衣卫的缇骑拔剑走上前，喝问：“谁在哀哭？”众人忍无可忍，把他们打倒在地。这时以大中丞身份巡抚苏州的，是魏忠贤的私党毛一鹭，周公被捕就是他主使的；苏州百姓正痛恨他，于是趁他厉声呵斥时，喧闹着追赶他。中丞躲进厕所才得以幸免。不久他借口苏州百姓作乱向朝廷请示，依法治罪杀了五人，就是颜佩韦、杨念如、马杰、沈扬、周文元，也就是如今安卧在墓中的人。",
+          "py": "yǔ yóu jì zhōu gōng zhī bèi dǎi zài bǐng yín sān yuè zhī wàng wú shè zhī xíng wèi shì xiān zhě wèi zhī shēng yì liǎn zī cái yǐ sòng qí xíng kū shēng zhèn dòng tiān dì tí qí àn jiàn ér qián wèn shuí wèi āi zhě zhòng bù néng kān chì ér pū zhī shì shí yǐ dà zhōng chéng fǔ wú zhě wèi wèi zhī sī rén máo yī lù gōng zhī dǎi suǒ yóu shǐ yě wú zhī mín fāng tòng xīn yān yú shì shèng qí lì shēng yǐ hē zé zào ér xiāng zhú zhōng chéng nì yú hùn fān yǐ miǎn jì ér yǐ wú mín zhī luàn qǐng yú cháo àn zhū wǔ rén yuē yán pèi wéi yáng niàn rú mǎ jié shěn yáng zhōu wén yuán jí jīn zhī lěi rán zài mù zhě yě"
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "zh": "然五人之当刑也，意气扬扬，呼中丞之名而詈之，谈笑以死。断头置城上，颜色不少变。有贤士大夫发五十金，买五人之脰而函之，卒与尸合。故今之墓中全乎为五人也。",
+          "yi": "然而五人受刑时，意气风发，呼喊中丞的名字痛骂他，谈笑着赴死。被砍下的头颅挂在城上，脸色一点也没改变。有贤明士大夫拿出五十两银子，买下五人的头颅装殓，最终与尸身合在一起。所以如今墓中，是完整的五个人。",
+          "py": "rán wǔ rén zhī dāng xíng yě yì qì yáng yáng hū zhōng chéng zhī míng ér lì zhī tán xiào yǐ sǐ duàn tóu zhì chéng shàng yán sè bù shǎo biàn yǒu xián shì dà fū fā wǔ shí jīn mǎi wǔ rén zhī dòu ér hán zhī zú yǔ shī hé gù jīn zhī mù zhōng quán hū wèi wǔ rén yě"
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "zh": "嗟乎！大阉之乱，缙绅而能不易其志者，四海之大，有几人欤？而五人生于编伍之间，素不闻诗书之训，激昂大义，蹈死不顾，亦曷故哉？且矫诏纷出，钩党之捕遍于天下，卒以吾郡之发愤一击，不敢复有株治；大阉亦逡巡畏义，非常之谋难于猝发，待圣人之出而投缳道路，不可谓非五人之力也。",
+          "yi": "唉！宦官魏忠贤作乱时，做官的能够不改变自己志节的，四海之内能有几人呢？而这五人出身普通百姓，平时没听过诗书教诲，却激昂于大义，踏上死地也不回头，又是什么缘故呢？况且伪造的诏书纷纷下达，株连党人的搜捕遍布天下，最终因为我郡这一愤怒的还击，魏党不敢再随便株连治罪；魏忠贤也犹豫畏义，篡位的阴谋难以突然发动，等到圣明的皇帝即位、魏忠贤在道路上自缢，不能说不是这五人的力量啊。",
+          "py": "jiē hū dà yān zhī luàn jìn shēn ér néng bù yì qí zhì zhě sì hǎi zhī dà yǒu jǐ rén yú ér wǔ rén shēng yú biān wǔ zhī jiān sù bù wén shī shū zhī xùn jī áng dà yì dǎo sǐ bù gù yì hé gù zāi qiě jiǎo zhào fēn chū gōu dǎng zhī bǔ biàn yú tiān xià zú yǐ wú jùn zhī fā fèn yī jī bù gǎn fù yǒu zhū zhì dà yān yì qūn xún wèi yì fēi cháng zhī móu nán yú cù fā dài shèng rén zhī chū ér tóu huán dào lù bù kě wèi fēi wǔ rén zhī lì yě"
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "zh": "由是观之，则今之高爵显位，一旦抵罪，或脱身以逃，不能容于远近，而又有剪发杜门，佯狂不知所之者，其辱人贱行，视五人之死，轻重固何如哉？是以蓼洲周公忠义暴于朝廷，赠谥褒美，显荣于身后；而五人亦得以加其土封，列其姓名于大堤之上，凡四方之士无不有过而拜且泣者，斯固百世之遇也。不然，令五人者保其首领，以老于户牖之下，则尽其天年，人皆得以隶使之，安能屈豪杰之流，扼腕墓道，发其志士之悲哉？故余与同社诸君子，哀斯墓之徒有其石也，而为之记，亦以明死生之大，匹夫之有重于社稷也。",
+          "yi": "由此看来，如今那些高官显贵，一旦犯罪，有的脱身逃跑，远近都容不下他们，又有削发闭门、假装疯癫不知去向的，他们可耻的人格、卑贱的行为，比起五人的死，轻重到底怎样呢？因此蓼洲周公的忠义在朝廷上显扬，赠谥号加以褒美，在身后荣耀；而五人也得以加修坟墓，把姓名刻在大堤之上，凡四方人士没有不经过那里跪拜流泪的，这实在是一百年来难得的际遇啊。否则，让五人保住头颅，老死在家里，那么他们能享尽天年，人人都可以把他们当奴仆使唤，又怎么能使豪杰们屈身墓道、抒发志士的悲慨呢？所以我与同社各位君子，惋惜这墓前空有石碑，就替它写了这篇记，也是用来阐明死生的重大意义，说明平民百姓也对国家有重要作用。",
+          "py": "yóu shì guān zhī zé jīn zhī gāo jué xiǎn wèi yī dàn dǐ zuì huò tuō shēn yǐ táo bù néng róng yú yuǎn jìn ér yòu yǒu jiǎn fā dù mén yáng kuáng bù zhī suǒ zhī zhě qí rǔ rén jiàn xíng shì wǔ rén zhī sǐ qīng zhòng gù hé rú zāi shì yǐ liǎo zhōu zhōu gōng zhōng yì bào yú cháo tíng zèng shì bāo měi xiǎn róng yú shēn hòu ér wǔ rén yì dé yǐ jiā qí tǔ fēng liè qí xìng míng yú dà dī zhī shàng fán sì fāng zhī shì wú bù yǒu guò ér bài qiě qì zhě sī gù bǎi shì zhī yù yě bù rán lìng wǔ rén zhě bǎo qí shǒu lǐng yǐ lǎo yú hù yǒu zhī xià zé jǐn qí tiān nián rén jiē dé yǐ lì shǐ zhī ān néng qū háo jié zhī liú è wàn mù dào fā qí zhì shì zhī bēi zāi gù yú yǔ tóng shè zhū jūn zi āi sī mù zhī tú yǒu qí shí yě ér wèi zhī jì yì yǐ míng sǐ shēng zhī dà pǐ fū zhī yǒu zhòng yú shè jì yě"
+        }
+      ]
+    },
+    {
+      "sentences": [
+        {
+          "zh": "贤士大夫者，冏卿因之吴公、太史文起文公、孟长姚公也。",
+          "yi": "那位贤明的士大夫，是太仆卿吴因之公、太史文起文公、姚孟长公。",
+          "py": "xián shì dà fū zhě jiǒng qīng yīn zhī wú gōng tài shǐ wén qǐ wén gōng mèng zhǎng yáo gōng yě"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "term": "蓼洲周公",
+      "desc": "即周顺昌，字景文，号蓼洲，苏州人，东林党人，因得罪魏忠贤被捕遇害。"
+    },
+    {
+      "term": "当道",
+      "desc": "指当地的当权者、行政长官。"
+    },
+    {
+      "term": "魏阉",
+      "desc": "对魏忠贤的贬称。魏忠贤，明末宦官，专权乱政。"
+    },
+    {
+      "term": "皦皦",
+      "desc": "同“皎皎”，光明貌，此处指名声显赫。"
+    },
+    {
+      "term": "缇骑",
+      "desc": "穿桔红色衣服的朝廷卫队，此处指魏忠贤派出的捕役。"
+    },
+    {
+      "term": "抶而仆之",
+      "desc": "把他们打倒在地。抶，击打；仆，使倒下。"
+    },
+    {
+      "term": "投缳",
+      "desc": "上吊自尽。指魏忠贤最终畏罪自杀。"
+    },
+    {
+      "term": "社稷",
+      "desc": "国家。社为土神，稷为谷神，代指国家。"
+    }
+  ],
+  "appreciation": [
+    "本文记述苏州市民反抗魏忠贤阉党的正义斗争，热烈歌颂五位义士“激于义而死”的英雄气概。文章开篇点明“义”字，以“激于义而死焉者也”提纲挈领，全文围绕“义”字展开。",
+    "作者善用对比反衬：以富贵子弟的“死而湮没”反衬五人的“皦皦”；以缙绅变节、高官免罪后的卑贱行径，反衬五人临刑的从容与死得其所。叙事简洁生动，议论酣畅淋漓。",
+    "结尾“明死生之大，匹夫之有重于社稷也”点明主旨：生死的意义不在寿命长短，而在一个普通人对国家兴亡也能起重大作用。语言慷慨激昂，极具感染力，是明末碑记名篇。"
+  ],
+  "background": "明天启六年（1626），魏忠贤派缇骑到苏州逮捕东林党人周顺昌，激起市民暴动。事后统治者搜捕市民，颜佩韦等五人为保护群众挺身就义。崇祯即位诛魏后，苏州人民葬五人于虎丘山塘，张溥为之作记。",
+  "topic": "歌颂五位平民“激于义而死”的英雄气概，阐明匹夫之有重于社稷的道理。"
+};

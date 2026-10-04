@@ -1,0 +1,18 @@
+v10-003
+  伶官 False
+  伶 True
+v10-004
+  俱伤两败 False
+  两败俱伤 False
+  两败 True
+v10-009
+  灵芝九茎 False
+  灵芝 True
+  九茎 True
+v10-010
+  判官 True
+  推官 True
+v10-012
+  见微知著 False
+v10-019
+  愤怨不平 False
