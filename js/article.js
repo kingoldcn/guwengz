@@ -179,7 +179,7 @@
     document.getElementById("gw-cover").style.display = "block";
     document.getElementById("gw-cover").innerHTML =
       '<div class="cover-wrap">' +
-        '<img src="assets/covers/' + id + '.png" alt="' + GW.esc(meta.title) + ' 绘本插画" onerror="this.parentNode.style.display=\'none\'">' +
+        '<img src="assets/covers/' + id + '.jpg" alt="' + GW.esc(meta.title) + ' 绘本插画" onerror="this.parentNode.style.display=\'none\'">' +
         '<div class="cover-cap"><h2>' + GW.esc(meta.title) + "</h2>" +
         "<span>" + GW.esc(meta.author + " · " + meta.dynasty) + "</span></div>" +
       "</div>";
